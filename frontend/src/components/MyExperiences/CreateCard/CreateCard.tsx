@@ -47,7 +47,7 @@ const CreateCard = () => {
       <Container>
         <Title>CREATE</Title>
         {SUBTEXTS.map((text, index, arr) => (
-          <CurrentText isActive={index === indexOfCurrentText}>{text}</CurrentText>
+          <CurrentText key={text} isActive={index === indexOfCurrentText}>{text}</CurrentText>
         ))}
       </Container>
     </Fragment>
