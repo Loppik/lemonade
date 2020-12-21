@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconDefinition } from '@fortawesome/fontawesome-common-types'
 import { Flex } from '../../styles';
 
 type ContainerProps = {
@@ -52,7 +53,7 @@ const NotificationDot = styled.div<NotificationDotProps>`
 `
 
 type Props = {
-  icon: any; // TODO:
+  icon: IconDefinition;
   text: string;
   onSelect: (text: string) => void;
   isSelected: boolean;

@@ -6,10 +6,20 @@ import { faInbox } from '@fortawesome/free-solid-svg-icons'
 import { Flex } from '../../styles';
 import BarElement from './BarElement';
 
+const C = styled(Flex)`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(transparent, #0000003b, #000000a3);
+`
+
 const Container = styled(Flex)`
   width: 30vw;
-  position: absolute;
-  left: 35vw;
   justify-content: space-between;
   background: #242424;
   padding: 10px 40px;
@@ -25,11 +35,13 @@ const Bar = () => {
   const onSelect = (text: string) => setSelectedBarText(text);
 
   return (
-    <Container>
-      <BarElement icon={faHome} text="home" onSelect={onSelect} isSelected={selectedBarText === 'home'} />
-      <BarElement icon={faPlusCircle} text="create" onSelect={onSelect} isSelected={selectedBarText === 'create'}/>
-      <BarElement icon={faInbox} text="inbox" onSelect={onSelect} isSelected={selectedBarText === 'inbox'} isHaveNotification />
-    </Container>
+    <C>
+      <Container>
+        <BarElement icon={faHome} text="home" onSelect={onSelect} isSelected={selectedBarText === 'home'} />
+        <BarElement icon={faPlusCircle} text="create" onSelect={onSelect} isSelected={selectedBarText === 'create'}/>
+        <BarElement icon={faInbox} text="inbox" onSelect={onSelect} isSelected={selectedBarText === 'inbox'} isHaveNotification />
+      </Container>
+    </C>
   )
 };
 

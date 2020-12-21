@@ -1,0 +1,11 @@
+html {
+  font-family: Space Grotesk, SansSerif;
+}
+
+#root {
+  background: black;
+}
+
+.react-multi-carousel-track li:first-child {
+  width: auto !important;
+}
