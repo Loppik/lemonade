@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import styled from 'styled-components';
 import CreateCard from './CreateCard';
 import Carousel from 'react-multi-carousel';
@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getHomeEventsAction } from '../../modules/homeEvents/actions';
 import { RootStateType } from '../../redux/types';
 import { EventType } from '../../modules/homeEvents/types';
+import { Flex } from '../../styles';
 
 type MarginContainerProps = {
   mt?: number;
@@ -61,7 +62,7 @@ const StyledCarousel = styled(Carousel)`
 
 const NoEventsBlock = styled.div`
   color: white;
-  height: 100%;
+  height: 280px;
   display: flex;
   align-items: center;
   padding-left: 40px;
@@ -116,28 +117,36 @@ const MyExperiences = () => {
   return (
     <Container>
       {events ? (
-        <StyledCarousel responsive={responsive} partialVisible>
-          <MarginContainer mr={10}>
-            <CreateCard/>
-          </MarginContainer>
-          {events.map((event: EventType)=> (
-            <EventCard
-              key={event.title}
-              cost={event.cost}
-              cover={event.cover}
-              currency={event.currency}
-              start={event.start}
-              avatar={event.host_expanded.image_avatar}
-              title={event.title}
-              eventLatitude={event.latitude}
-              eventLongitude={event.longitude}
-              userLocation={userLocation}
-            />
-          ))}
-          {events.length === 0 && (
-            <NoEventsBlock>No events</NoEventsBlock>
+        <Fragment>
+          {events.length !== 0 ? (
+            <StyledCarousel responsive={responsive} partialVisible>
+              <MarginContainer mr={10}>
+                <CreateCard/>
+              </MarginContainer>
+              {events.map((event: EventType)=> (
+                <EventCard
+                  key={event.title}
+                  cost={event.cost}
+                  cover={event.cover}
+                  currency={event.currency}
+                  start={event.start}
+                  avatar={event.host_expanded.image_avatar}
+                  title={event.title}
+                  eventLatitude={event.latitude}
+                  eventLongitude={event.longitude}
+                  userLocation={userLocation}
+                />
+              ))}
+            </StyledCarousel>
+          ) : (
+            <Flex>
+              <MarginContainer mr={10}>
+                <CreateCard/>
+              </MarginContainer>
+              <NoEventsBlock>No events</NoEventsBlock>
+            </Flex>
           )}
-        </StyledCarousel>
+        </Fragment>
       ) : (
         <MarginContainer mr={10}>
           <CreateCard/>

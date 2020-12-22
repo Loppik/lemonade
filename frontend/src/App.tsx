@@ -4,7 +4,7 @@ import Bar from './components/Bar';
 import MyExperiences from './components/MyExperiences';
 
 const Container = styled.div`
-  padding: 20px 10px 20px 20px;
+  padding: 20px;
 `
 
 
