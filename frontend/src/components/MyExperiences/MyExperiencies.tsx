@@ -59,6 +59,14 @@ const StyledCarousel = styled(Carousel)`
   }
 `
 
+const NoEventsBlock = styled.div`
+  color: white;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+`
+
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
@@ -126,6 +134,9 @@ const MyExperiences = () => {
               userLocation={userLocation}
             />
           ))}
+          {events.length === 0 && (
+            <NoEventsBlock>No events</NoEventsBlock>
+          )}
         </StyledCarousel>
       ) : (
         <MarginContainer mr={10}>
